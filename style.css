@@ -34,6 +34,18 @@ a {
   text-decoration: none;
 }
 
+.copyright-notice {
+  position: fixed;
+  right: 0.75rem;
+  bottom: 0.55rem;
+  z-index: 4;
+  color: rgba(238, 243, 255, 0.42);
+  font-size: 0.68rem;
+  font-weight: 500;
+  line-height: 1.2;
+  pointer-events: none;
+}
+
 .app-shell {
   min-height: 100vh;
   display: grid;
