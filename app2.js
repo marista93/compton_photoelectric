@@ -569,7 +569,7 @@ function createPhotonRecord(plan, photonFragment, atomStates) {
   incomingTrailElement.style.transform = `translate3d(${startX}px, ${startY}px, 0) rotate(${incomingAngle}rad)`;
   photonFragment.append(incomingTrailElement);
 
-  scatterTrailElement.className = "photon-trail is-blue";
+  scatterTrailElement.className = "photon-trail is-green";
   scatterTrailElement.style.opacity = "0";
   photonFragment.append(scatterTrailElement);
 
@@ -1101,8 +1101,10 @@ function renderPhotonAtTime(photon, elapsed) {
   const photonAngle = photon.type === "compton" && localElapsed > photon.incomingDuration
     ? photon.scatterAngle
     : photon.incomingAngle;
+  const photonIsScattered = photon.type === "compton" && localElapsed > photon.incomingDuration;
 
   photon.element.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${photonAngle}rad)`;
+  photon.element.classList.toggle("is-scattered-compton", photonIsScattered);
   setPhotonOpacity(photon, getPhotonOpacity(photon, localElapsed));
   renderPhotonTrails(photon, x, y, localElapsed);
   renderRecoilElectron(photon, localElapsed);

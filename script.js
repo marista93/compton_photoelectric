@@ -39,6 +39,8 @@ const hcKeVNm = 1.239841984;
 const electronComptonWavelengthNm = 0.00242631;
 const initialWavelengthNm = hcKeVNm / photonInitialEnergyKeV;
 const visualInitialWavelengthPx = 10;
+const visualScatteredWavelengthMultiplier = 1.5;
+const scatteredPhotonColor = "rgba(57, 255, 20, 0.9)";
 const visualEmittedWavelengthPx = 38;
 const photonCenterTravelDuration = 1.55;
 const photoelectricVacancyDelay = 1;
@@ -606,7 +608,8 @@ function drawComptonScene(metrics, currentTime, outerOrbitRadius, electronRadius
   const photonVisualSpeed = getPhotonVisualSpeed(metrics);
   const photonDistance = scatterElapsed * photonVisualSpeed;
   const electronDistance = scatterElapsed * photonVisualSpeed * results.electronBeta;
-  const visualScatteredWavelength = visualInitialWavelengthPx * results.wavelengthRatio;
+  const visualScatteredWavelength =
+    visualInitialWavelengthPx * visualScatteredWavelengthMultiplier;
   const photonPosition = {
     x: interaction.x + Math.cos(results.photonAngleRad) * photonDistance,
     y: interaction.y + Math.sin(results.photonAngleRad) * photonDistance,
@@ -646,7 +649,7 @@ function drawComptonScene(metrics, currentTime, outerOrbitRadius, electronRadius
     wavelength: visualScatteredWavelength,
     packetLength: metrics.scale * 0.19,
     amplitude: metrics.scale * 0.01,
-    color: "rgba(147, 197, 253, 0.78)",
+    color: scatteredPhotonColor,
     alpha: results.energyRatio,
   });
 
@@ -942,9 +945,9 @@ function drawComptonGeometry({
 }) {
   drawPhotonIncomingPath(incomingStartX, incomingY, interaction.x);
   drawReferenceExtension(interaction, scale);
-  drawGeometryLine(interaction, photonPosition, "rgba(147, 197, 253, 0.52)", [9, 7]);
+  drawGeometryLine(interaction, photonPosition, "rgba(57, 255, 20, 0.5)", [9, 7]);
   drawGeometryLine(interaction, electronPosition, "rgba(250, 204, 21, 0.62)", [5, 6]);
-  drawAngleArc(interaction, 0, photonAngleRad, scale * 0.095, "φ", "#93c5fd");
+  drawAngleArc(interaction, 0, photonAngleRad, scale * 0.095, "φ", "#39ff14");
   drawAngleArc(
     interaction,
     0,

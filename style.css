@@ -622,6 +622,11 @@ h1 {
   background: linear-gradient(90deg, rgba(0, 174, 255, 0.24), rgba(56, 189, 248, 1), rgba(0, 174, 255, 0.24));
 }
 
+.beam-photon.is-scattered-compton {
+  background: linear-gradient(90deg, rgba(57, 255, 20, 0.24), rgba(57, 255, 20, 1), rgba(57, 255, 20, 0.24));
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.58);
+}
+
 .beam-photon.is-photoelectric {
   background: linear-gradient(90deg, rgba(0, 174, 255, 0.24), rgba(56, 189, 248, 1), rgba(0, 174, 255, 0.24));
 }
@@ -642,6 +647,10 @@ h1 {
 
 .photon-trail.is-blue {
   border-top: 1px solid rgba(125, 211, 252, 0.26);
+}
+
+.photon-trail.is-green {
+  border-top: 1px solid rgba(57, 255, 20, 0.3);
 }
 
 .photon-trail.is-red {
